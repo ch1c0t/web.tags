@@ -6,6 +6,8 @@ BASE_TAGS = [
   'nav'
   'a'
   'button'
+  'template'
+  'slot'
 ]
 
 window.TAGS = {}
