@@ -1,0 +1,1 @@
+HTMLElement::on = HTMLElement::addEventListener
