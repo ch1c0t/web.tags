@@ -35,7 +35,15 @@ class MyHTMLElement extends HTMLElement
 
     @shadowRoot.dispatchEvent event
 
-window.tag = (name, spec) ->
+window.tag = ->
+  switch arguments.length
+    when 1
+      namelessTag arguments[0]
+    when 2
+      [name, spec] = arguments
+      namedTag name, spec
+
+namedTag = (name, spec) ->
   el = class extends MyHTMLElement
 
   if spec.shadow
@@ -51,3 +59,6 @@ window.tag = (name, spec) ->
   hyphenated = hyphenate name
   customElements.define hyphenated, el
   TAGS[name] = wrap hyphenated
+
+namelessTag = (spec) ->
+  console.log spec
