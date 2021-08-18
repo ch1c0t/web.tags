@@ -2,6 +2,7 @@
 
 BASE_TAGS = [
   'div'
+  'span'
   'p'
   'nav'
   'a'
