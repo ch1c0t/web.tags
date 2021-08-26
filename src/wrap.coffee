@@ -44,4 +44,4 @@ wrap = (name) ->
   (...args) ->
     element name, ...args
 
-module.exports = { wrap }
+export { wrap }

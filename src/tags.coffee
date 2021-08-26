@@ -1,4 +1,4 @@
-{ wrap } = require './wrap'
+import { wrap } from './wrap.js'
 
 BASE_TAGS = [
   'div'
@@ -15,4 +15,4 @@ window.TAGS = {}
 for name in BASE_TAGS
   TAGS[name] = wrap name
 
-require './tag'
+import './tag.js'

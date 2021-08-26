@@ -1,4 +1,4 @@
-{ wrap } = require './wrap'
+import { wrap } from './wrap.js'
 
 hyphenate = (string) ->
   string

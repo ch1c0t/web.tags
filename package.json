@@ -1,6 +1,7 @@
 {
-  "name": "tags",
+  "name": "web.tags",
   "main": "lib/tags.js",
+  "type": "module",
   "version": "0.0.0",
   "scripts": {
     "start": "coffee --watch --compile --output lib src"
