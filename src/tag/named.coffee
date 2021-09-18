@@ -1,30 +1,23 @@
 import { wrap } from '../wrap.js'
-import { MyHTMLElement } from './my_hmtl_element.js'
+import { MyHTMLElement } from './my_html_element.js'
 
-namedTag = (name, spec) ->
-  el = class extends MyHTMLElement
+namedTag = (name, { connected, data, render, methods, once }) ->
+  base = class extends MyHTMLElement
 
-  if spec.connected
-    el::connectedCallback = spec.connected
+  if connected
+    base::connectedCallback = connected
 
-  if spec.render
-    el::template = spec.render
+  if render
+    base::template = render
 
-  if spec.once
-    el::once = spec.once
+  if once
+    base::once = once
 
-  if spec.methods
-    for n, m of spec.methods
-      el::[n] = m
+  if methods
+    for n, m of methods
+      base::[n] = m
 
-  hyphenated = hyphenate name
-  customElements.define hyphenated, el
-
-  fn = if spec.data
-    createTag { name: hyphenated, data: spec.data }
-  else
-    wrap hyphenated
-
+  fn = createTag { name, data, base }
   window.TAGS[name] = fn
   fn
 
@@ -35,16 +28,22 @@ hyphenate = (string) ->
     .map Function::call, String::toLowerCase
     .join '-'
 
-createTag = ({ name, data }) ->
-  (input) ->
-    element = document.createElement name
-    element.data ?= {}
+createTag = ({ name, data, base }) ->
+  name = hyphenate name
+  customElements.define name, base
 
-    for key, fn of data
-      value = fn.call input[key]
-      element.data[key] = value
-      element[key] = value
+  if data
+    (input) ->
+      element = document.createElement name
+      element.data ?= {}
 
-    element
+      for key, fn of data
+        value = fn.call input[key]
+        element.data[key] = value
+        element[key] = value
+
+      element
+  else
+    wrap name
 
 export { namedTag }
