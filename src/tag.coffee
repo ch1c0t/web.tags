@@ -19,13 +19,6 @@ class MyHTMLElement extends HTMLElement
     else
       @replaceChildren template
 
-  emit: (name, detail) ->
-    event = new CustomEvent name,
-      bubbles: true
-      detail: detail
-
-    @dispatchEvent event
-
 window.tag = ->
   switch arguments.length
     when 1

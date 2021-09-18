@@ -1,3 +1,4 @@
+import './ext.js'
 import { wrap } from './wrap.js'
 
 BASE_TAGS = [
