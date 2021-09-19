@@ -3,12 +3,12 @@ class MyHTMLElement extends HTMLElement
     @render()
     @once() if @once
 
-  render: (template) ->
-    template ?= @template()
+  render: (view) ->
+    view ?= @view()
 
-    if Array.isArray template
-      @replaceChildren ...template
+    if Array.isArray view
+      @replaceChildren ...view
     else
-      @replaceChildren template
+      @replaceChildren view
 
 export { MyHTMLElement }

@@ -1,14 +1,14 @@
 import { wrap } from '../wrap.js'
 import { MyHTMLElement } from './my_html_element.js'
 
-namedTag = (name, { connected, data, render, methods, once }) ->
+namedTag = (name, { connected, data, view, methods, once }) ->
   base = class extends MyHTMLElement
 
   if connected
     base::connectedCallback = connected
 
-  if render
-    base::template = render
+  if view
+    base::view = view
 
   if once
     base::once = once

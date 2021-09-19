@@ -1,4 +1,4 @@
-namelessTag = ({ data, render, methods, once }) ->
+namelessTag = ({ data, view, methods, once }) ->
   (input) ->
     state =
       data: {}
@@ -8,7 +8,7 @@ namelessTag = ({ data, render, methods, once }) ->
       state.data[key] = value
       state[key] = value
 
-    element = render.call state
+    element = view.call state
 
     for key, value of state
       element[key] = value
