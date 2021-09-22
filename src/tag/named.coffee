@@ -1,4 +1,5 @@
 import { wrap } from '../wrap.js'
+import { hyphenate } from 'hyphenate.pascalcase'
 import { MyHTMLElement } from './my_html_element.js'
 
 namedTag = (name, { connected, data, view, methods, once }) ->
@@ -20,13 +21,6 @@ namedTag = (name, { connected, data, view, methods, once }) ->
   fn = createTag { name, data, base }
   window.TAGS[name] = fn
   fn
-
-hyphenate = (string) ->
-  string
-    .split /([A-Z][a-z]+)/
-    .filter Boolean
-    .map Function::call, String::toLowerCase
-    .join '-'
 
 createTag = ({ name, data, base }) ->
   name = hyphenate name

@@ -8,5 +8,8 @@
   },
   "devDependencies": {
     "coffeescript": "^2.5.1"
+  },
+  "dependencies": {
+    "hyphenate.pascalcase": "^0.0.0"
   }
 }
