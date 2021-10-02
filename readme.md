@@ -12,3 +12,12 @@ A view is either of these:
 - an Array of HTMLElement instances;
 
 [HTMLElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
+
+### `window.TAGS`
+
+is to store tags. By default, only the tags for basic elements
+(like [p][p], [span][span], and [div][div]) are there.
+
+[p]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+[span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+[div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
