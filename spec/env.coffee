@@ -7,10 +7,7 @@ as = (fn) ->
 { spawn } = require 'child_process'
 Server = fun
   init:
-    path: ->
-      DefaultPath = "#{__dirname}/pwa0/dist.dev"
-      console.log DefaultPath
-      @value or DefaultPath
+    path: -> @value or "#{__dirname}/pwa0/dist.dev"
     port: -> @value or 8080
   once: ->
     @subprocess = spawn './node_modules/.bin/serve', ['-p', @port, @path]
