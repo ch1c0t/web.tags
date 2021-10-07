@@ -4,10 +4,6 @@
 as = (fn) ->
   -> if @value then fn @value else fn()
 
-sleep = (ms) ->
-  new Promise (resolve) ->
-    setTimeout resolve, ms
-
 { spawn } = require 'child_process'
 Server = fun
   init:
@@ -38,7 +34,7 @@ exports.Env = fun
 
     await @page.goto url
   call: (input) ->
-    await sleep 3000
+    await @once
 
     switch input
       when 'page'

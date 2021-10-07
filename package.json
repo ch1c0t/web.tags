@@ -8,7 +8,7 @@
     "test": "jasmine"
   },
   "devDependencies": {
-    "@ch1c0t/fun": "^0.1.0",
+    "@ch1c0t/fun": "^0.1.1",
     "coffeescript": "^2.5.1",
     "jasmine": "^3.9.0",
     "puppeteer": "^10.4.0",
