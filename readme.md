@@ -1,4 +1,4 @@
-## Introduction
+# Introduction
 
 To install: `npm install web.tags`.
 
@@ -13,7 +13,7 @@ A view is either of these:
 
 [HTMLElement]: https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement
 
-### `window.TAGS`
+## `window.TAGS`
 
 is to store tags. By default, only the tags for basic elements
 (like [p][p], [span][span], and [div][div]) are there.
@@ -32,7 +32,7 @@ element = div [
   div 'first child'
   div 'second child'
   div id: 'SomeId', class: 'SomeClass', [
-    div id: 'AnotherId', class 'AnotherClass', 'some grandchild text'
+    div id: 'AnotherId', class: 'AnotherClass', 'some grandchild text'
   ]
 ]
 ```
@@ -48,3 +48,17 @@ render 'SomeId', element
 [span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 [render]: https://gitlab.com/ch1c0t/web.helpers/-/tree/module#render
+
+## `window.tag`
+
+is a function to define tags. They can be named or nameless.
+
+### Named tags
+
+After a named tag is defined, it gets added to `window.TAGS`.
+
+To define a named tag, pass two arguments to `window.tag`:
+
+### Nameless tags
+
+Nameless tags do not get added to `window.TAGS`.
