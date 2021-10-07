@@ -4,10 +4,15 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "start": "coffee --watch --compile --output lib src"
+    "start": "coffee --watch --compile --output lib src",
+    "test": "jasmine"
   },
   "devDependencies": {
-    "coffeescript": "^2.5.1"
+    "@ch1c0t/fun": "^0.1.0",
+    "coffeescript": "^2.5.1",
+    "jasmine": "^3.9.0",
+    "puppeteer": "^10.4.0",
+    "serve": "^12.0.1"
   },
   "dependencies": {
     "hyphenate.pascalcase": "^0.0.0"
