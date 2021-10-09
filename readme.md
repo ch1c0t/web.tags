@@ -91,7 +91,10 @@ Named tags create [custom elements][custom_elements].
 
 Nameless tags do not get added to `window.TAGS`.
 
-To define a nameless tag, pass one argument to `window.tag`:
+To define a nameless tag, pass to `window.tag` one argument
+(which is the same `spec` as for named tags).
+
+For example:
 
 ```coffee
 # Definition
