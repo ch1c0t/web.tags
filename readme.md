@@ -74,7 +74,7 @@ tag 'SomeName',
     language: -> @value or 'CoffeeScript'
     link: -> @value or 'https://github.com/ch1c0t/web.tags'
   view: ->
-    p "#{@language} from #{@link}"
+    p "#{@language} of #{@link}"
 
 # Usage
 { SomeName } = TAGS
