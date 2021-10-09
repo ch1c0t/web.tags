@@ -36,15 +36,17 @@ describe 'main', ->
       html = await @page.evaluate ->
         { SomeName } = TAGS
         element = SomeName()
+        document.body.appendChild element
         element.outerHTML
 
-      that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
+      that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/web.tags</p></some-name>'
       expect(html).toBe that
 
     it 'works when some of the arguments were passed', ->
       html = await @page.evaluate ->
         { SomeName } = TAGS
         element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
+        document.body.appendChild element
         element.outerHTML
 
       that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
@@ -54,6 +56,7 @@ describe 'main', ->
       html = await @page.evaluate ->
         { SomeName } = TAGS
         element = SomeName link: 'https://github.com/ch1c0t/hobby-rpc', language: 'Ruby'
+        document.body.appendChild element
         element.outerHTML
 
       that = '<some-name><p>Ruby of https://github.com/ch1c0t/hobby-rpc</p></some-name>'

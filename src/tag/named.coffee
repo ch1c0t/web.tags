@@ -32,9 +32,12 @@ createTag = ({ name, data, base }) ->
       element.data ?= {}
 
       for key, fn of data
-        value = fn.call input[key]
-        element.data[key] = value
-        element[key] = value
+        value = input[key] if input
+        context = { value }
+
+        result = fn.call context
+        element.data[key] = result
+        element[key] = result
 
       element
   else
