@@ -55,9 +55,32 @@ is a function to define tags. They can be named or nameless.
 
 ### Named tags
 
-After a named tag is defined, it gets added to `window.TAGS`.
+When a named tag is defined, it gets added to `window.TAGS`.
 
 To define a named tag, pass two arguments to `window.tag`:
+
+- `name`, under which the tag will be available in `window.TAGS`.
+   A String in PascalCase.
+- `spec`, which defines what the tag provides.
+   An Object that must have a `view` property.
+
+An example:
+
+```coffee
+# Definition
+{ p } = TAGS
+tag 'SomeName',
+  data:
+    language: -> @value or 'CoffeeScript'
+    link: -> @value or 'https://github.com/ch1c0t/web.tags'
+  view: ->
+    p "#{@language} from #{@link}"
+
+# Usage
+{ SomeName } = TAGS
+element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
+element.outerHTML #=> <p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p>
+```
 
 ### Nameless tags
 
