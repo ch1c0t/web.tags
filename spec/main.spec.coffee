@@ -19,6 +19,3 @@ describe 'main', ->
       div.textContent
 
     expect(text).toBe 'some text'
-
-  afterAll ->
-    await @env 'end'
