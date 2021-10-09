@@ -22,7 +22,7 @@ describe 'main', ->
       expect(text).toBe 'some text'
 
   describe 'named tags', ->
-    it 'works when no arguments were passed', ->
+    beforeEach ->
       await @page.evaluate ->
         { p } = TAGS
         tag 'SomeName',
@@ -32,10 +32,29 @@ describe 'main', ->
           view: ->
             p "#{@language} of #{@link}"
 
+    it 'works when no arguments were passed', ->
       html = await @page.evaluate ->
         { SomeName } = TAGS
         element = SomeName()
         element.outerHTML
 
       that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
+      expect(html).toBe that
+
+    it 'works when some of the arguments were passed', ->
+      html = await @page.evaluate ->
+        { SomeName } = TAGS
+        element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
+        element.outerHTML
+
+      that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
+      expect(html).toBe that
+
+    it 'works when all the arguments were passed', ->
+      html = await @page.evaluate ->
+        { SomeName } = TAGS
+        element = SomeName link: 'https://github.com/ch1c0t/hobby-rpc', language: 'Ruby'
+        element.outerHTML
+
+      that = '<some-name><p>Ruby of https://github.com/ch1c0t/hobby-rpc</p></some-name>'
       expect(html).toBe that
