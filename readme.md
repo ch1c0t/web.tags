@@ -64,7 +64,7 @@ To define a named tag, pass two arguments to `window.tag`:
 - `spec`, which defines what the tag provides.
    An Object that must have a `view` property.
 
-An example:
+For example:
 
 ```coffee
 # Definition
