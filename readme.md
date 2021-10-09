@@ -79,8 +79,13 @@ tag 'SomeName',
 # Usage
 { SomeName } = TAGS
 element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
-element.outerHTML #=> <p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p>
+element.outerHTML
+#=> <some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>
 ```
+
+Named tags create [custom elements][custom_elements].
+
+[custom_elements]: https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements
 
 ### Nameless tags
 
