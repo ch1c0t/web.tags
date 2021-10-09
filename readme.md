@@ -90,3 +90,46 @@ Named tags create [custom elements][custom_elements].
 ### Nameless tags
 
 Nameless tags do not get added to `window.TAGS`.
+
+To define a nameless tag, pass one argument to `window.tag`:
+
+```coffee
+# Definition
+{ p } = TAGS
+SomeName = tag
+  data:
+    language: -> @value or 'CoffeeScript'
+    link: -> @value or 'https://github.com/ch1c0t/web.tags'
+  view: ->
+    p "#{@language} of #{@link}"
+
+# Usage
+element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
+element.outerHTML
+#=> <div><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></div>
+```
+
+By default, nameless tags return divs.
+To change the default, pass two arguments -- `root` and `spec`:
+
+```coffee
+# Definition
+{ li, ul } = TAGS
+List = tag ul,
+  view: ->
+    [
+      li 'first'
+      li 'second'
+    ]
+
+# Usage
+element = List()
+element.outerHTML
+#=> <ul><li>first</li><li>second</li></ul>
+```
+
+In the above example, `root` is the `ul` function.
+`root` can be either of these:
+
+- an instance of [HTMLElement][HTMLElement];
+- a nullary function that returns an instance of HTMLElement;
