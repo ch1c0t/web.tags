@@ -10,6 +10,7 @@
   "devDependencies": {
     "@ch1c0t/fun": "^0.1.1",
     "coffeescript": "^2.5.1",
+    "hook.at-exit": "^0.0.0",
     "jasmine": "^3.9.0",
     "puppeteer": "^10.4.0",
     "serve": "^12.0.1"

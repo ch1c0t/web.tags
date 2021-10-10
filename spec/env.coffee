@@ -1,24 +1,9 @@
 { fun } = require '@ch1c0t/fun'
+{ AtExit } = require 'hook.at-exit'
 
 # A function to value functions as types.
 as = (fn) ->
   -> if @value then fn @value else fn()
-
-SIGNALS = [
-  'exit'
-  'SIGINT'
-  'SIGUSR1'
-  'SIGUSR2'
-  'uncaughtException'
-  'SIGTERM'
-]
-
-run = (fn) ->
-  (signal) ->
-    process.on signal, fn
-
-AtExit = (fn) ->
-  SIGNALS.forEach run fn
 
 { spawn } = require 'child_process'
 Server = fun
