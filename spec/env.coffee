@@ -1,9 +1,6 @@
-{ fun } = require '@ch1c0t/fun'
 { AtExit } = require 'hook.at-exit'
-
-# A function to value functions as types.
-as = (fn) ->
-  -> if @value then fn @value else fn()
+{ fun } = require '@ch1c0t/fun'
+{ as } = require 'value.as'
 
 { spawn } = require 'child_process'
 Server = fun
