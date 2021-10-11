@@ -2,15 +2,22 @@
 { fun } = require '@ch1c0t/fun'
 { as } = require 'value.as'
 
+sleep = (ms) ->
+  new Promise (resolve) ->
+    setTimeout resolve, ms
+
 { spawn } = require 'child_process'
 Server = fun
   init:
     path: -> @value or "#{__dirname}/pwa0/dist.dev"
     port: -> @value or 8080
   once: ->
-    @subprocess = spawn './node_modules/.bin/serve', ['-p', @port, @path]
-    AtExit => process.kill @subprocess.pid
+    serve = spawn './node_modules/.bin/serve', ['-p', @port, @path]
+    AtExit -> process.kill serve.pid
+    sleep 200
   call: (input) ->
+    await @once
+
     switch input
       when 'port'
         @port
@@ -35,7 +42,7 @@ exports.Env = fun
     server: as Server
     browser: as Browser
   once: ->
-    port = @server 'port'
+    port = await @server 'port'
     url = "http://localhost:#{port}"
 
     @page = await @browser 'page'
