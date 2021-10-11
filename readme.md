@@ -131,7 +131,7 @@ element.outerHTML
 #=> <div><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></div>
 ```
 
-By default, nameless tags return divs.
+By default, if you pass one argument, nameless tags return divs.
 To change the default, pass two arguments -- `root` and `spec`:
 
 ```coffee
