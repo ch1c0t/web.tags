@@ -1,10 +1,7 @@
 { AtExit } = require 'hook.at-exit'
 { fun } = require '@ch1c0t/fun'
 { as } = require 'value.as'
-
-sleep = (ms) ->
-  new Promise (resolve) ->
-    setTimeout resolve, ms
+{ sleep } = require '@ch1c0t/sleep'
 
 { spawn } = require 'child_process'
 Server = fun

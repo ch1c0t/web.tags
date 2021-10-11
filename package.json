@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "@ch1c0t/fun": "^0.1.1",
+    "@ch1c0t/sleep": "^0.0.0",
     "coffeescript": "^2.5.1",
     "hook.at-exit": "^0.0.0",
     "jasmine": "^3.9.0",
