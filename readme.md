@@ -16,7 +16,8 @@ A view is either of these:
 ## `window.TAGS`
 
 is to store tags. By default, only the tags for basic elements
-(like [p][p], [span][span], and [div][div]) are there.
+(like [p][p], [span][span], and [div][div]) are there. The full
+list is in [src/tags.coffee](src/tags.coffee).
 
 You can pass to such tags zero, one, or two arguments:
 
@@ -24,10 +25,28 @@ You can pass to such tags zero, one, or two arguments:
 import 'web.tags'
 { div } = TAGS
 
+# A call with zero arguments
 element = div()
 
+# A call with one argument, a String representing a Text node:
+# https://developer.mozilla.org/en-US/docs/Web/API/Text
 element = div 'some string'
 
+# A call with one argument, an Object representing Element.attributes:
+# https://developer.mozilla.org/en-US/docs/Web/API/Element/attributes
+element = div id: 'SomeId', class: 'SomeClass'
+
+# A call with one argument, an Array representing Element.children:
+# https://developer.mozilla.org/en-US/docs/Web/API/Element/children
+element = div [
+  div 'first child'
+  div 'second child'
+]
+
+# A call with two arguments(attributes and content):
+element = div id: 'SomeId', class: 'SomeClass', 'some content'
+
+# A nested example
 element = div [
   div 'first child'
   div 'second child'

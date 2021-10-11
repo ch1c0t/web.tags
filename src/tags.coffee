@@ -1,7 +1,7 @@
 import './ext.js'
 import { wrap } from './wrap.js'
 
-BASE_TAGS = [
+names = [
   'div'
   'span'
   'p'
@@ -13,7 +13,7 @@ BASE_TAGS = [
 ]
 
 window.TAGS = {}
-for name in BASE_TAGS
+for name in names
   TAGS[name] = wrap name
 
 import './tag.js'
