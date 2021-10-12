@@ -1,12 +1,9 @@
 import { wrap } from '../wrap.js'
 import { hyphenate } from 'hyphenate.pascalcase'
-import { MyHTMLElement } from './my_html_element.js'
+import { CustomHTMLElement } from './custom_html_element.js'
 
 namedTag = (name, { connected, data, view, methods, once }) ->
-  base = class extends MyHTMLElement
-
-  if connected
-    base::connectedCallback = connected
+  base = class extends CustomHTMLElement
 
   if view
     base::view = view
