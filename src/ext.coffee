@@ -6,3 +6,11 @@ HTMLElement::emit = (name, detail) ->
     detail: detail
 
   @dispatchEvent event
+
+HTMLElement::render = (view) ->
+  view ?= @view()
+
+  if Array.isArray view
+    @replaceChildren ...view
+  else
+    @replaceChildren view

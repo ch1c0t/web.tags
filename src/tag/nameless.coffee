@@ -1,21 +1,23 @@
 namelessTag = ({ data, view, methods, once }) ->
   (input) ->
-    state =
-      data: {}
+    element = document.createElement 'div'
+    element.data ?= {}
 
     for key, fn of data
-      value = fn.call input[key]
-      state.data[key] = value
-      state[key] = value
+      value = input[key] if input
+      context = { value }
 
-    element = view.call state
-
-    for key, value of state
-      element[key] = value
+      result = fn.call context
+      element.data[key] = result
+      element[key] = result
 
     if methods
       for name, method of methods
         element[name] = method
+
+    if view
+      element.view = view
+      element.render()
 
     if once
       once.call element
