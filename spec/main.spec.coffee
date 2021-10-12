@@ -64,6 +64,23 @@ describe 'main', ->
         expect(html).toBe that
 
   describe 'nameless tags', ->
+    describe 'passing the root element', ->
+      it 'works when it is passed as a nullary function', ->
+        html = await @page.evaluate ->
+          { li, ul } = TAGS
+          List = tag ul,
+            view: ->
+              [
+                li 'first'
+                li 'second'
+              ]
+
+          element = List()
+          element.outerHTML
+
+        that = '<ul><li>first</li><li>second</li></ul>'
+        expect(html).toBe that
+
     describe 'passing arguments', ->
       beforeEach ->
         await @page.evaluate ->
