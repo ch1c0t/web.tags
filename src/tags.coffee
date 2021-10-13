@@ -10,6 +10,12 @@ names = [
   'button'
   'template'
   'slot'
+  'ul'
+  'ol'
+  'li'
+  'dl'
+  'dt'
+  'dd'
 ]
 
 window.TAGS = {}

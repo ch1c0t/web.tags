@@ -81,6 +81,23 @@ describe 'main', ->
         that = '<ul><li>first</li><li>second</li></ul>'
         expect(html).toBe that
 
+      it 'works when it is passed as an instance of HTMLElement', ->
+        html = await @page.evaluate ->
+          { li, ul } = TAGS
+          element = ul()
+          List = tag element,
+            view: ->
+              [
+                li 'first'
+                li 'second'
+              ]
+
+          element = List()
+          element.outerHTML
+
+        that = '<ul><li>first</li><li>second</li></ul>'
+        expect(html).toBe that
+
     describe 'passing arguments', ->
       beforeEach ->
         await @page.evaluate ->

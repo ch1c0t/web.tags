@@ -2,7 +2,7 @@ import { wrap } from '../wrap.js'
 import { hyphenate } from 'hyphenate.pascalcase'
 import { CustomHTMLElement } from './custom_html_element.js'
 
-namedTag = (name, { connected, data, view, methods, once }) ->
+NamedTag = (name, { connected, data, view, methods, once }) ->
   base = class extends CustomHTMLElement
 
   if view
@@ -15,11 +15,11 @@ namedTag = (name, { connected, data, view, methods, once }) ->
     for n, m of methods
       base::[n] = m
 
-  fn = createTag { name, data, base }
+  fn = CreateTag { name, data, base }
   window.TAGS[name] = fn
   fn
 
-createTag = ({ name, data, base }) ->
+CreateTag = ({ name, data, base }) ->
   name = hyphenate name
   customElements.define name, base
 
@@ -40,4 +40,4 @@ createTag = ({ name, data, base }) ->
   else
     wrap name
 
-export { namedTag }
+export { NamedTag }

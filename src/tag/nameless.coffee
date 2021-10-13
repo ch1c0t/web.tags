@@ -1,6 +1,14 @@
-namelessTag = ({ data, view, methods, once }) ->
+NamelessTag = (spec) ->
+  root = document.createElement 'div'
+  NamelessTagWithRoot root, spec
+
+NamelessTagWithRoot = (root, { data, view, methods, once }) ->
+  element = if root instanceof HTMLElement
+    root
+  else
+    root()
+
   (input) ->
-    element = document.createElement 'div'
     element.data ?= {}
 
     for key, fn of data
@@ -24,4 +32,4 @@ namelessTag = ({ data, view, methods, once }) ->
 
     element
 
-export { namelessTag }
+export { NamelessTag, NamelessTagWithRoot }
