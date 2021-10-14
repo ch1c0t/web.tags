@@ -81,7 +81,7 @@ To define a named tag, pass two arguments to `window.tag`:
 - `name`, under which the tag will be available in `window.TAGS`.
    A String in PascalCase.
 - `spec`, which defines what the tag provides.
-   An Object that must have a `view` property.
+   An Object defined [here](#spec).
 
 For example:
 
@@ -111,7 +111,7 @@ Named tags create [custom elements][custom_elements].
 Nameless tags do not get added to `window.TAGS`.
 
 To define a nameless tag, pass to `window.tag` one argument
-(which is the same `spec` as for named tags).
+(which is [the same `spec`](#spec) as for named tags).
 
 For example:
 
@@ -155,3 +155,10 @@ In the above example, `root` is the `ul` function.
 
 - an instance of [HTMLElement][HTMLElement];
 - a nullary function that returns an instance of HTMLElement;
+
+### `spec`
+
+is the tag specification.
+It is an Object that might have the following properties:
+
+#### `data`
