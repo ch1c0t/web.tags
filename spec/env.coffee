@@ -34,7 +34,7 @@ Browser = fun
       when 'page'
         @page
 
-exports.Env = fun
+Env = fun
   init:
     server: as Server
     browser: as Browser
@@ -50,3 +50,5 @@ exports.Env = fun
     switch input
       when 'page'
         @page
+
+module.exports = { Server, Browser, Env }
