@@ -3,6 +3,7 @@
 To install: `npm install web.tags`.
 
 This defines `window.TAGS` and `window.tag`, and extends `HTMLElement.prototype`.
+For the sake of composability.
 
 A tag is a function that returns a view.
 
@@ -43,7 +44,7 @@ element = div [
   div 'second child'
 ]
 
-# A call with two arguments(attributes and content):
+# A call with two arguments(attributes and content)
 element = div id: 'SomeId', class: 'SomeClass', 'some content'
 
 # A nested example
