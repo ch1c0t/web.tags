@@ -162,3 +162,35 @@ is the tag specification.
 It is an Object that might have the following properties:
 
 #### `data`
+
+is an Object that specifies:
+
+- what data a tag can receive as an argument;
+- how a tag processes these data;
+
+Each property of `data` must be associated with a function that returns a value.
+When a tag gets called, this value is assigned to a property with the same name
+in the returned element.
+
+```coffee
+# Definition
+Some = tag
+  data:
+    language: -> @value or 'CoffeeScript'
+    link: -> @value or 'https://github.com/ch1c0t/web.tags'
+
+# Usage
+element = Some language: 'Ruby'
+element.language #=> 'Ruby'
+element.link #=> 'https://github.com/ch1c0t/web.tags'
+element.data #=> { language: 'Ruby', link: 'https://github.com/ch1c0t/web.tags' }
+```
+
+In the above example, the tag `Some` can receive an Object,
+in which it looks for `language` and `link` properties.
+It passes the values of these properties to their corresponding functions as `@value`.
+For `language`, it is `'Ruby'`; for `link`, it is `undefined`.
+
+Then, the values returned from the functions get assigned to `language` and `link`
+in the returned element. And besides that, all the data get assigned
+to the `data` property.
