@@ -45,10 +45,13 @@ Env = fun
     @page = await @browser 'page'
     await @page.goto url
   call: (input) ->
-    await @once
+    try
+      await @once
 
-    switch input
-      when 'page'
-        @page
+      switch input
+        when 'page'
+          @page
+    catch error
+      console.log error
 
 module.exports = { Server, Browser, Env }
