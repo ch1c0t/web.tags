@@ -195,3 +195,45 @@ For `language`, it is `'Ruby'`; for `link`, it is `undefined`.
 Then, the values returned from the functions get assigned to `language` and `link`
 in the returned element. And besides that, all the data get assigned
 to the `data` property.
+
+## `HTMLElement`
+
+enriched with the following functions:
+
+### `on`
+
+is the same as [HTMLElement::addEventListener][addEventListener].
+
+[addEventListener]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+### `emit`
+
+is to emit [CustomEvents][CustomEvent]. Its signature: `emit(name, detail?)`.
+
+It creates [an event that bubbles][bubbles], and dispatches it to the current element.
+
+[CustomEvent]: https://developer.mozilla.org/en-US/docs/Web/API/CustomEvent/CustomEvent
+[bubbles]: https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events#event_bubbling
+
+### `render`
+
+is to replace the children of the current element. Its signature: `render(view?)`.
+
+A usage example:
+
+```coffee
+{ div } = TAGS
+
+document.body.render [
+  div 'first child'
+  div 'second child'
+]
+```
+
+If don't pass an argument,
+it will use [the `view` function][#view] of the current element to obtain
+a view to render.
+
+It uses [HTMLElement::replaceChildren][replaceChildren] under the hood.
+
+[replaceChildren]: https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren
