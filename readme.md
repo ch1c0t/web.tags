@@ -202,6 +202,31 @@ Then, the values returned from the functions get assigned to `language` and `lin
 in the returned element. And besides that, all the data get assigned
 to the `data` property.
 
+#### `view`
+
+is a function that must return either of these:
+
+- a view;
+- a Promise to resolve to a view;
+
+This function would be executed in the element's context,
+which allows to use the element's `data` inside of it:
+
+```coffee
+# Definition
+{ p } = TAGS
+Some = tag
+  data:
+    name: -> @value or 'Ruby'
+  view: ->
+    p "Hello, #{@name}."
+
+# Usage
+element = Some name: 'Alice'
+element.outerHTML
+#=> <div><p>Hello, Alice</p></div>
+```
+
 ## `HTMLElement`
 
 enriched with the following functions:
