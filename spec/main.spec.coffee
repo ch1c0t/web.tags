@@ -34,34 +34,46 @@ describe 'main', ->
               p "#{@language} of #{@link}"
 
       it 'works when no arguments were passed', ->
-        html = await @page.evaluate ->
+        [InitialHTML, RenderedHTML] = await @page.evaluate ->
           { SomeName } = TAGS
           element = SomeName()
-          document.body.appendChild element
-          element.outerHTML
+          InitialHTML = element.outerHTML
 
-        that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/web.tags</p></some-name>'
-        expect(html).toBe that
+          document.body.appendChild element
+          RenderedHTML = element.outerHTML
+
+          [InitialHTML, RenderedHTML]
+
+        expect(InitialHTML).toBe  '<some-name></some-name>'
+        expect(RenderedHTML).toBe '<some-name><p>CoffeeScript of https://github.com/ch1c0t/web.tags</p></some-name>'
 
       it 'works when some of the arguments were passed', ->
-        html = await @page.evaluate ->
+        [InitialHTML, RenderedHTML] = await @page.evaluate ->
           { SomeName } = TAGS
           element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
-          document.body.appendChild element
-          element.outerHTML
+          InitialHTML = element.outerHTML
 
-        that = '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
-        expect(html).toBe that
+          document.body.appendChild element
+          RenderedHTML = element.outerHTML
+
+          [InitialHTML, RenderedHTML]
+
+        expect(InitialHTML).toBe  '<some-name></some-name>'
+        expect(RenderedHTML).toBe '<some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>'
 
       it 'works when all the arguments were passed', ->
-        html = await @page.evaluate ->
+        [InitialHTML, RenderedHTML] = await @page.evaluate ->
           { SomeName } = TAGS
           element = SomeName link: 'https://github.com/ch1c0t/hobby-rpc', language: 'Ruby'
-          document.body.appendChild element
-          element.outerHTML
+          InitialHTML = element.outerHTML
 
-        that = '<some-name><p>Ruby of https://github.com/ch1c0t/hobby-rpc</p></some-name>'
-        expect(html).toBe that
+          document.body.appendChild element
+          RenderedHTML = element.outerHTML
+
+          [InitialHTML, RenderedHTML]
+
+        expect(InitialHTML).toBe  '<some-name></some-name>'
+        expect(RenderedHTML).toBe '<some-name><p>Ruby of https://github.com/ch1c0t/hobby-rpc</p></some-name>'
 
   describe 'nameless tags', ->
     describe 'passing the root element', ->
