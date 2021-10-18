@@ -57,7 +57,8 @@ element = div [
 ]
 ```
 
-To add elements to the document, you can use [the `render` function](#render):
+To add elements to [the `document.body`][document.body],
+you can use [the `render` function](#render):
 
 ```coffee
 document.body.render element
@@ -67,6 +68,7 @@ document.body.render element
 [span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 [render]: https://gitlab.com/ch1c0t/web.helpers/-/tree/module#render
+[document.body]: https://developer.mozilla.org/en-US/docs/Web/API/Document/body
 
 ## `window.tag`
 
