@@ -57,11 +57,10 @@ element = div [
 ]
 ```
 
-To add elements to the document, you can use [the render function from `web.helpers`][render]:
+To add elements to the document, you can use [the `render` function](#render):
 
 ```coffee
-import { render } from 'web.helpers'
-render 'SomeId', element
+document.body.render element
 ```
 
 [p]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
@@ -71,7 +70,7 @@ render 'SomeId', element
 
 ## `window.tag`
 
-is a function to define tags. They can be named or nameless.
+is a function to define tags. Tags can be named or nameless.
 
 ### Named tags
 
@@ -100,12 +99,19 @@ tag 'SomeName',
 { SomeName } = TAGS
 element = SomeName link: 'https://github.com/ch1c0t/wrapjsx'
 element.outerHTML
+#=> <some-name></some-name>
+
+document.body.render element
+element.outerHTML
 #=> <some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>
 ```
 
 Named tags create [custom elements][custom_elements].
+Custom elements call [the `render` function](#render) in their [connectedCallback][connectedCallback],
+when they are connected to the document.
 
 [custom_elements]: https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements
+[connectedCallback]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks
 
 ### Nameless tags
 
@@ -202,7 +208,7 @@ enriched with the following functions:
 
 ### `on`
 
-is the same as [HTMLElement::addEventListener][addEventListener].
+is the same as [HTMLElement.addEventListener][addEventListener].
 
 [addEventListener]: https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 
@@ -228,12 +234,15 @@ document.body.render [
   div 'first child'
   div 'second child'
 ]
+
+document.body.outerHTML
+#=> <body><div>first child</div><div>second child</div></body>
 ```
 
-If don't pass an argument,
-it will use [the `view` function][#view] of the current element to obtain
+If you don't pass an argument,
+it will use [the `view` function](#view) of the current element to obtain
 a view to render.
 
-It uses [HTMLElement::replaceChildren][replaceChildren] under the hood.
+It uses [HTMLElement.replaceChildren][replaceChildren] under the hood.
 
 [replaceChildren]: https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren
