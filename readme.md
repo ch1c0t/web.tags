@@ -229,6 +229,37 @@ element.outerHTML
 #=> <div><p>Hello, Alice</p></div>
 ```
 
+#### `once`
+
+is a function that will be executed only once.
+
+For common elements, it happens immediately after all the `data` were assigned to the element;
+for custom elements, it happens once the element was [connected to the document][connectedCallback].
+
+The returned value of this function will be assigned to the `@once` attribute.
+If it is a Promise, it may be convenient to use it in the `@view`:
+
+```coffee
+# Definition
+{ p } = TAGS
+Some = tag
+  data:
+    language: -> @value or 'CoffeeScript'
+    link: -> @value or 'https://github.com/ch1c0t/web.tags'
+  once: ->
+    @string = "#{@language} of #{@link}"
+    @asynchronous = await Promise.resolve 'from Promise'
+  view: ->
+    @once.then =>
+      p "#{@asynchronous}: #{@string}"
+
+
+# Usage
+element = Some()
+element.outerHTML
+#=> <div><p>from Promise: CoffeeScript of https://github.com/ch1c0t/web.tags</p></div>
+```
+
 ## `HTMLElement`
 
 enriched with the following functions:
