@@ -72,7 +72,10 @@ document.body.render element
 
 ## `window.tag`
 
-is a function to define tags. Tags can be named or nameless.
+is a function to define tags. They can be named or nameless.
+
+All tags defined with `window.tag` return an instance of [HTMLElement][HTMLElement].
+It is the root element of a tag.
 
 ### Named tags
 
@@ -108,9 +111,8 @@ element.outerHTML
 #=> <some-name><p>CoffeeScript of https://github.com/ch1c0t/wrapjsx</p></some-name>
 ```
 
-Named tags create [custom elements][custom_elements].
-Custom elements call [the `render` function](#render) in their [connectedCallback][connectedCallback],
-when they are connected to the document.
+Named tags create [custom elements][custom_elements]
+that call [`render`](#render) in their [connectedCallback][connectedCallback].
 
 [custom_elements]: https://developer.mozilla.org/en-US/docs/Web/API/Window/customElements
 [connectedCallback]: https://developer.mozilla.org/en-US/docs/Web/Web_Components/Using_custom_elements#using_the_lifecycle_callbacks
@@ -229,6 +231,15 @@ element.outerHTML
 #=> <div><p>Hello, Alice</p></div>
 ```
 
+#### `reactive`
+
+is a Boolean which is `true` by default.
+
+If an element is reactive, it will wrap its `data` in [Proxy objects][Proxy]
+and call [`render`](#render) when its `data` change.
+
+[Proxy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
+
 #### `once`
 
 is a function that will be executed only once.
@@ -258,6 +269,30 @@ Some = tag
 element = Some()
 element.outerHTML
 #=> <div><p>from Promise: CoffeeScript of https://github.com/ch1c0t/web.tags</p></div>
+```
+
+#### `methods`
+
+is an Object that specifies what methods to add to the root element.
+
+```coffee
+# Definition
+{ button } = TAGS
+Some = tag
+  once: ->
+    @style.width = '0px'
+  view: ->
+    button onclick: 'this.parentNode.toggle()'
+  methods: ->
+    toggle: ->
+      if @style.width is '0px'
+        @style.width = '100%'
+      else
+        @style.width = '0px'
+
+# Usage
+element = Some()
+element.toggle()
 ```
 
 ## `HTMLElement`
