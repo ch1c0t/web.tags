@@ -175,10 +175,7 @@ It is an Object that might have the following properties:
 
 #### `data`
 
-is an Object that specifies:
-
-- what data a tag can receive as an argument;
-- how a tag processes these data;
+is an Object that specifies how a tag processes its argument.
 
 Each property of `data` must be associated with a function that returns a value.
 When a tag gets called, this value is assigned to a property with the same name
