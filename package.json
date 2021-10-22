@@ -4,13 +4,17 @@
   "type": "module",
   "version": "0.0.0",
   "scripts": {
-    "start": "coffee --watch --compile --output lib src",
+    "start": "coffee scripts/watch.coffee",
+    "build": "coffee scripts/build.coffee",
     "test": "jasmine"
   },
   "devDependencies": {
     "@ch1c0t/fun": "^0.1.1",
+    "@ch1c0t/io": "^0.0.4",
     "@ch1c0t/sleep": "^0.0.0",
+    "chokidar": "^3.5.2",
     "coffeescript": "^2.5.1",
+    "esbuild": "^0.13.8",
     "hook.at-exit": "^0.0.0",
     "jasmine": "^3.9.0",
     "puppeteer": "^10.4.0",
