@@ -339,3 +339,13 @@ a view to render.
 It uses [HTMLElement.replaceChildren][replaceChildren] under the hood.
 
 [replaceChildren]: https://developer.mozilla.org/en-US/docs/Web/API/Element/replaceChildren
+
+# Tools
+
+[maketag][maketag] is a tool to make tags. It allows to:
+
+- generate new packages providing tags;
+- augment tags with Sass styles;
+- test tags with Jasmine and Puppeteer;
+
+[maketag]: https://github.com/ch1c0t/maketag
