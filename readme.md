@@ -17,10 +17,10 @@ A view is either of these:
 ## `window.TAGS`
 
 is to store tags. By default, only the tags for basic elements
-(like [p][p], [span][span], and [div][div]) are there. The full
+(like [p][p] and [div][div]) are there. The full
 list is in [src/tags.coffee](src/tags.coffee).
 
-You can pass to such tags zero, one, or two arguments:
+You can pass to such tags 0, 1, or 2 arguments:
 
 ```coffee
 import 'web.tags'
@@ -65,17 +65,18 @@ document.body.render element
 ```
 
 [p]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
-[span]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
 [div]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/div
 [render]: https://gitlab.com/ch1c0t/web.helpers/-/tree/module#render
 [document.body]: https://developer.mozilla.org/en-US/docs/Web/API/Document/body
 
 ## `window.tag`
 
-is a function to define tags. They can be named or nameless.
+is a function to define tags which
 
-All tags defined with `window.tag` return an instance of [HTMLElement][HTMLElement].
-It is the root element of a tag.
+- return an instance of [HTMLElement][HTMLElement](the root element of a tag);
+- receive 0 or 1 argument(an Object feeding the root element's [`data`](#data));
+
+Tags can be named or nameless.
 
 ### Named tags
 
@@ -181,7 +182,7 @@ is an Object that specifies:
 
 Each property of `data` must be associated with a function that returns a value.
 When a tag gets called, this value is assigned to a property with the same name
-in the returned element.
+in the root element.
 
 ```coffee
 # Definition
@@ -203,7 +204,7 @@ It passes the values of these properties to their corresponding functions as `@v
 For `language`, it is `'Ruby'`; for `link`, it is `undefined`.
 
 Then, the values returned from the functions get assigned to `language` and `link`
-in the returned element. And besides that, all the data get assigned
+in the root element. And besides that, all the data get assigned
 to the `data` property.
 
 #### `view`
@@ -213,7 +214,7 @@ is a function that must return either of these:
 - a view;
 - a Promise to resolve to a view;
 
-This function would be executed in the element's context,
+This function will be executed in the element's context,
 which allows to use the element's `data` inside of it:
 
 ```coffee
