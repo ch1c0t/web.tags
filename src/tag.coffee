@@ -1,8 +1,6 @@
 import { NamelessTag, NamelessTagWithRoot } from './tag/nameless.js'
 import { NamedTag } from './tag/named.js'
-
-isString = (object) ->
-  (typeof object is 'string') or (object instanceof String)
+import { isString } from './helpers.js'
 
 window.tag = ->
   switch arguments.length
