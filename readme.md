@@ -71,12 +71,14 @@ document.body.render element
 
 ## `window.tag`
 
-is a function to define tags which
+is a function to define tags that
 
 - return an instance of [HTMLElement][HTMLElement](the root element of a tag);
 - receive 0 or 1 argument(an Object feeding the root element's [`data`](#data));
 
-Tags can be named or nameless.
+These tags can be named or nameless.
+Depending on what arguments you pass to `window.tag`, it will create either
+a named tag or a nameless tag.
 
 ### Named tags
 
@@ -177,9 +179,11 @@ It is an Object that might have the following properties:
 
 is an Object that specifies how a tag processes its argument.
 
+Without `data`, a tag ignores what was passed as an argument
+and returns a root element that has no `data`.
+
 Each property of `data` must be associated with a function that returns a value.
-When a tag gets called, this value is assigned to a property with the same name
-in the root element.
+When a tag gets called, these values are assigned to the root element.
 
 ```coffee
 # Definition
@@ -200,9 +204,9 @@ in which it looks for `language` and `link` properties.
 It passes the values of these properties to their corresponding functions as `@value`.
 For `language`, it is `'Ruby'`; for `link`, it is `undefined`.
 
-Then, the values returned from the functions get assigned to `language` and `link`
-in the root element. And besides that, all the data get assigned
-to the `data` property.
+Then, the values returned from the functions get assigned to
+`language` and `link` of the root element.
+Also, all the values get assigned to `data` of the root element.
 
 #### `view`
 
