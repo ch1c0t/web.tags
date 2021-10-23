@@ -24,7 +24,12 @@ Browser = fun
   init:
     headless: -> @value or no
   once: ->
-    browser = await puppeteer.launch headless: @headless
+    browser = await puppeteer.launch
+      headless: @headless
+      args: [
+        '--no-sandbox'
+        '--disable-setuid-sandbox'
+      ]
     AtExit -> browser.close()
     @page = await browser.newPage()
   call: (input) ->
