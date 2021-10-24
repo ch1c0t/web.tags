@@ -17,8 +17,8 @@ A view is either of these:
 ## `window.TAGS`
 
 is to store tags. By default, only the tags for basic elements
-(like [p][p] and [div][div]) are there. The full
-list is in [src/tags.coffee](src/tags.coffee).
+(like [p][p] and [div][div]) are there.
+The full list is in [src/tags.coffee](src/tags.coffee).
 
 You can pass to such tags 0, 1, or 2 arguments:
 
@@ -74,7 +74,7 @@ document.body.render element
 is a function to define tags that
 
 - return an instance of [HTMLElement][HTMLElement](the root element of a tag);
-- receive 0 or 1 argument(an Object feeding the root element's [`data`](#data));
+- receive 0 or 1 argument(an Object flowing into the root element's [`data`](#data));
 
 These tags can be named or nameless.
 Depending on what arguments you pass to `window.tag`, it will create either
@@ -82,7 +82,7 @@ a named tag or a nameless tag.
 
 ### Named tags
 
-When a named tag is defined, it gets added to `window.TAGS`.
+When a named tag is defined, it gets added to [`window.TAGS`](#windowtags).
 
 To define a named tag, pass two arguments to `window.tag`:
 
@@ -199,7 +199,7 @@ element.link #=> 'https://github.com/ch1c0t/web.tags'
 element.data #=> { language: 'Ruby', link: 'https://github.com/ch1c0t/web.tags' }
 ```
 
-In the above example, the tag `Some` can receive an Object,
+In the above example, the tag `Some` receives an Object `{ language: 'Ruby' }`,
 in which it looks for `language` and `link` properties.
 It passes the values of these properties to their corresponding functions as `@value`.
 For `language`, it is `'Ruby'`; for `link`, it is `undefined`.
@@ -237,7 +237,7 @@ element.outerHTML
 
 is a Boolean which is `true` by default.
 
-If an element is reactive, it will wrap its `data` in [Proxy objects][Proxy]
+If an element is reactive, it will bind its `data` with [Proxy objects][Proxy]
 and call [`render`](#render) when its `data` change.
 
 [Proxy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
