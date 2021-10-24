@@ -175,6 +175,12 @@ In the above example, `root` is the `ul` function.
 is the tag specification.
 It is an Object that might have the following properties:
 
+- [`data`](#data), an Object;
+- [`view`](#view), a Function;
+- [`reactive`](#reactive), a Boolean;
+- [`once`](#once), a Function;
+- [`methods`](#methods), an Object;
+
 #### `data`
 
 is an Object that specifies how a tag processes its argument.
