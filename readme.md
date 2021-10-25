@@ -170,6 +170,9 @@ In the above example, `root` is the `ul` function.
 - an instance of [HTMLElement][HTMLElement];
 - a nullary function that returns an instance of HTMLElement;
 
+Nameless tags call [`render`](#render) of their root elements
+before returning them.
+
 ### `spec`
 
 is the tag specification.
