@@ -2,7 +2,7 @@ NamelessTag = (spec) ->
   root = document.createElement 'div'
   NamelessTagWithRoot root, spec
 
-NamelessTagWithRoot = (root, { data, view, methods, once }) ->
+NamelessTagWithRoot = (root, { data, view, once, methods }) ->
   element = if root instanceof HTMLElement
     root
   else
@@ -23,12 +23,12 @@ NamelessTagWithRoot = (root, { data, view, methods, once }) ->
       for name, method of methods
         element[name] = method
 
+    if once
+      element.once = once.call element
+
     if view
       element.view = view
       element.render()
-
-    if once
-      once.call element
 
     element
 

@@ -262,7 +262,6 @@ Some = tag
     @once.then =>
       p "#{@asynchronous}: #{@string}"
 
-
 # Usage
 element = Some()
 element.outerHTML

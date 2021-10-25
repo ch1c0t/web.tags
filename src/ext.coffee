@@ -10,7 +10,10 @@ HTMLElement::emit = (name, detail) ->
 HTMLElement::render = (view) ->
   view ?= @view()
 
-  if Array.isArray view
-    @replaceChildren ...view
+  if typeof view.then is 'function'
+    view.then (view) => @render view
   else
-    @replaceChildren view
+    if Array.isArray view
+      @replaceChildren ...view
+    else
+      @replaceChildren view
