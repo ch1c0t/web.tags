@@ -240,13 +240,13 @@ element.outerHTML
 
 #### `once`
 
-is a function that will be executed only once.
+is a function that will be executed only once, in the element's context.
 
-For common elements, it happens immediately after all the `data` were assigned to the element;
-for custom elements, it happens once the element was [connected to the document][connectedCallback].
+For common elements, it happens once all the [`data`](#data) were assigned to the element.
+For custom elements, it happens once the element was [connected to the document][connectedCallback].
 
-The returned value of this function will be assigned to the `@once` attribute.
-If it is a Promise, it may be convenient to use it in the `@view`:
+The returned value of this function will be assigned to the `@once` property.
+If it is a Promise, it may be convenient to use it in the [`view`](#view):
 
 ```coffee
 # Definition
