@@ -1,6 +1,8 @@
 class CustomHTMLElement extends HTMLElement
   connectedCallback: ->
+    if @onceFunction
+      @once = @onceFunction()
+      @onceFunction = no
     @render()
-    @once() if @once
 
 export { CustomHTMLElement }

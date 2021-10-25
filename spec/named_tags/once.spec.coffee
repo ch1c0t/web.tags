@@ -1,10 +1,10 @@
-describe 'nameless once', ->
+describe 'named once', ->
   SetupPage()
 
   it 'works', ->
     await @page.evaluate ->
       { p } = TAGS
-      Some = tag
+      tag 'SomeName',
         data:
           language: -> @value or 'CoffeeScript'
           link: -> @value or 'https://github.com/ch1c0t/web.tags'
@@ -15,9 +15,11 @@ describe 'nameless once', ->
           @once.then =>
             p "#{@asynchronous}: #{@string}"
 
-      window.element = Some()
+      { SomeName } = TAGS
+      window.element = SomeName()
+      document.body.render element
 
     await @page.waitForTimeout 100
     html = await @page.evaluate -> element.outerHTML
 
-    expect(html).toBe '<div><p>from Promise: CoffeeScript of https://github.com/ch1c0t/web.tags</p></div>'
+    expect(html).toBe '<some-name><p>from Promise: CoffeeScript of https://github.com/ch1c0t/web.tags</p></some-name>'

@@ -2,14 +2,14 @@ import { wrap } from '../wrap.js'
 import { hyphenate } from 'hyphenate.pascalcase'
 import { CustomHTMLElement } from './custom_html_element.js'
 
-NamedTag = (name, { connected, data, view, methods, once }) ->
+NamedTag = (name, { data, view, once, methods }) ->
   base = class extends CustomHTMLElement
 
   if view
     base::view = view
 
   if once
-    base::once = once
+    base::onceFunction = once
 
   if methods
     for n, m of methods
