@@ -177,7 +177,6 @@ It is an Object that might have the following properties:
 
 - [`data`](#data), an Object;
 - [`view`](#view), a Function;
-- [`reactive`](#reactive), a Boolean;
 - [`once`](#once), a Function;
 - [`methods`](#methods), an Object;
 
@@ -238,15 +237,6 @@ element = Some name: 'Alice'
 element.outerHTML
 #=> <div><p>Hello, Alice</p></div>
 ```
-
-#### `reactive`
-
-is a Boolean which is `true` by default.
-
-If an element is reactive, it will bind its `data` with [Proxy objects][Proxy]
-and call [`render`](#render) when its `data` change.
-
-[Proxy]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy
 
 #### `once`
 
