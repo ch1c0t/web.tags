@@ -1,14 +1,14 @@
 NamelessTag = (spec) ->
-  root = document.createElement 'div'
-  NamelessTagWithRoot root, spec
+  { div } = TAGS
+  NamelessTagWithRoot div, spec
 
 NamelessTagWithRoot = (root, { data, view, once, methods }) ->
-  element = if root instanceof HTMLElement
-    root
-  else
-    root()
-
   (input) ->
+    element = if root instanceof HTMLElement
+      root
+    else
+      root()
+
     element.data ?= {}
 
     for key, fn of data
