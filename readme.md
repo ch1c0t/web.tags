@@ -283,7 +283,7 @@ Some = tag
     @style.width = '0px'
   view: ->
     button onclick: 'this.parentNode.toggle()'
-  methods: ->
+  methods:
     toggle: ->
       if @style.width is '0px'
         @style.width = '100%'
@@ -293,6 +293,8 @@ Some = tag
 # Usage
 element = Some()
 element.toggle()
+element.style.width
+#=> '100%'
 ```
 
 ## `HTMLElement`
