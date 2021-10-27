@@ -16,6 +16,7 @@ names = [
   'dl'
   'dt'
   'dd'
+  'style'
 ]
 
 window.TAGS = {}
