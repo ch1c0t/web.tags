@@ -2,7 +2,7 @@
   "name": "web.tags",
   "main": "lib/tags.js",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "scripts": {
     "start": "coffee scripts/watch.coffee",
     "build": "coffee scripts/build.coffee",
@@ -23,5 +23,12 @@
   },
   "dependencies": {
     "hyphenate.pascalcase": "^0.0.0"
+  },
+  "author": "Anatoly Chernov <chertoly@gmail.com>",
+  "description": "To extend the web with tags",
+  "license": "0BSD",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ch1c0t/web.tags"
   }
 }
